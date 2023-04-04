@@ -10,26 +10,53 @@
     </head>
     <body>
         <div class="container">
+            <div id="modal-form" style="display: none;">
+                <form class="bookForm">
+                    <div class="formTop">
+                        <button class="formTopButton" id="formTopExitButton">X</button>
+                    </div>
+                    <div>
+                        <label for="Title">Title:</label>
+                        <input type="text" name="formTitle" id="formTitle" class="formInput">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="Author">Author:</label>
+                        <input type="text" name="formAuthor"  id="formAuthor" class="formInput">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="Pages">Pages:</label>
+                        <input type="number" name="formPages"  id="formPages" class="formInput" max="10000" min="1">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="Read">Read:</label>
+                        <select name="formRead"  id="formRead" form="bookForm" class="formInput">
+                            <option value="Not Completed">Not Completed</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <br>
+                    </div>
+                    <div class="formButtonDiv">
+                        <button class="formButton" id="formSubmitButton">Submit</button>
+                        <button class="formButton" id="formRemoveButton">Remove</button>
+                    </div>
+                </form>
+            </div>
             <div class="topNav">
-                <button class="addBookButton">+ Add New Book</button>
+                <button class="submitButton" id="addBookButton">+ Add New Book</button>
             </div>
             <div class="bookShelf">
                 <div class="bookShelfHeader">
-                    <div class="headerTitle">#</div>
-                    <div class="headerTitle">Title</div>
-                    <div class="headerTitle">Author</div>
-                    <div class="headerTitle">Pages</div>
-                    <div class="headerTitle">Completed</div>
+                    <div class="bookObjectElement">#</div>
+                    <div class="bookObjectElement">Title</div>
+                    <div class="bookObjectElement">Author</div>
+                    <div class="bookObjectElement">Pages</div>
+                    <div class="bookObjectElement">Completed</div>
                 </div>
                 <div class="bookShelfContainer">
                     <!-- JS Logic to Append Books into Bookshelf goes here -->
-                    <div class="bookObject">
-                        <div class="headerTitle">Book No. 0</div>
-                        <div class="headerTitle">Discipline is Destiny</div>
-                        <div class="headerTitle">Ryan Holiday</div>
-                        <div class="headerTitle">312</div>
-                        <div class="headerTitle">Current</div>
-                    </div>
                 </div>
             </div>
         </div>
