@@ -46,13 +46,24 @@
     max-width: 90px;
 }
 
-#formRemoveButton {
+.removeButton, 
+.editButton {
     color: white;
-    background-color: red;
     text-align: center;
     border-radius: 6px;
     padding: 10px;
     margin-top: 1em;
+    font-size: smaller;
+    width: 6em;
+
+}
+.removeButton {
+    background-color: red;
+    margin-bottom: 1em;
+}
+
+.editButton {
+    background-color: orange;
 }
 
 label {
@@ -86,17 +97,44 @@ input, select {
     flex-direction: row;
     flex: 0.75;
     position: sticky;
+    margin-top: 1em;
+    margin-bottom: -2em;
+    width: 90%;
     justify-content: space-between;
 }
 
-.bookObjectElement {
+.bookObjectTitle {
     color: white;
     font-weight: 700;
-    font-size: x-large;
-    padding-left: 5em;
-    padding-right: 5em;
-    padding-top: 0.75em;
-    border-color: 2px solid white;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookObjectElement,
+.bookObjectElementIndex {
+    display: flex;
+    color: limegreen;
+    font-size: larger;
+    font-weight: 600;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookObjectElementIndex {
+    margin-left: -2em;
+    margin-right: 3em;
+}
+
+.bookObjectElement#title {
+    margin-left: -3em;
+    margin-right: 3em;
+}
+
+.bookObjectElement#author {
+    margin-left: -3em;
+    margin-right: 2em;
 }
 
 .bookShelfContainer {
@@ -112,15 +150,11 @@ input, select {
 .bookObject {
     display: flex;
     margin: 1em;
-    justify-content: space-evenly;
+    justify-content: space-around;
     border: 4px dotted limegreen;
     min-height: 100px;
 }
 
-.bookObject > .bookObjectElement {
-    color: limegreen;
-    font-size: larger;
-}
 
 #modal-form {
     display: none;
@@ -157,4 +191,11 @@ input, select {
     justify-content: space-between;
     align-items: center;
     margin-top: 0.5em;
+  }
+
+  .bookObjectContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
   }
