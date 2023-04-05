@@ -141,7 +141,7 @@ input, select {
     display: flex;
     flex-direction: column;
     width: 95%;
-    flex: 5;
+    flex: 1;
     border: 5px solid white;
     background-color: black;
     margin: 1em;
