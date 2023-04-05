@@ -1,6 +1,7 @@
 let myLibrary = [];
 const modalDiv = document.getElementById('modal-form');
 
+// Book Class Object
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -21,6 +22,17 @@ function closeAddBookModal (event) {
     modalDiv.style.display = 'none';
 }
 
+function removeBookButton () {
+
+    const removeBook = document.querySelectorAll("button.removeButton");
+
+    removeBook.forEach(rButton => {
+        rButton.addEventListener("click", (e) => {
+        console.log(e.target);
+        })
+    })
+}
+
 function addBookToLibrary(event) {
 
     let title = document.querySelector("#formTitle").value;
@@ -36,12 +48,29 @@ function addBookToLibrary(event) {
         event.preventDefault();
         alert("Please make sure pages is a number between 1 and 10,000");
         return;
+        
+        // If form submission is valid, execute the following algo:
     } else {
+        
+        // Prevent Default Event of Submission from happening
         event.preventDefault();
+
+        // Instantiate a new class of object called book using the book protype with "new" invocation
         const book = new Book(title, author, pages, read);
+
+        // Push the newly instantiated book to my library
         myLibrary.push(book);
+
+        // Hide the modal
         modalDiv.style.display = 'none';
+
+        // Call the display book function
         displayBook();
+
+        // Add a 'click' event listener to the remove button of every newly created book object. Update the nodelist of all "button.removeButton"
+        removeBookButton();
+
+        // Reset form to original state
         document.querySelector('#formTitle').value = '';
         document.querySelector('#formAuthor').value = '';
         document.querySelector('#formPages').value = '';
@@ -63,8 +92,8 @@ function displayBook() {
 
             // Index
             const bookIndex = document.createElement('div');
-            bookIndex.textContent = (parseInt(books) + 1);
-            bookIndex.setAttribute("id", (parseInt(books) + 1));
+            bookIndex.textContent = (parseInt(books));
+            bookIndex.setAttribute("id", (parseInt(books)));
             bookIndex.classList.add("bookObjectElementIndex");
             bookObject.appendChild(bookIndex);
 
@@ -110,7 +139,7 @@ function displayBook() {
             editButton.textContent = "Edit"
             bookObjectContainer.appendChild(editButton);
 
-            removeButton.setAttribute("id", `remove book: ${books}`);
+            // removeButton.setAttribute("id", `remove book: ${books}`);
             removeButton.classList.add("removeButton");
             removeButton.textContent = "Remove"
             bookObjectContainer.appendChild(removeButton);
@@ -124,12 +153,11 @@ const bookButtonPress = bookButton.addEventListener("click", displayAddBookModal
 
 const submitButton = document.querySelector("#formSubmitButton");
 const pressedSubmitButton = submitButton.addEventListener("click", addBookToLibrary);
-// const showBookInLibrary = submitButton.addEventListener("click", displayBook);
 
 const exitModal= document.querySelector("#formTopExitButton");
 const pressedExitModal = exitModal.addEventListener("click", closeAddBookModal)
 
 
 // TO DO LIST: 
-// - Create a function that validates form "correctness" ~ this is so that I can pass this function to my addBookToLibrary() and displayBook() functions
-// - Wire up logic 
+// - Add Remove bookObject from list logic
+// - Add Read book function 
