@@ -2,13 +2,29 @@ let myLibrary = [];
 const modalDiv = document.getElementById('modal-form');
  
 // Book Class Object
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    completionStatus() {
+        return this.read;
+    }
+
+    get changeCompletionStatus () {
+        
+        if (this.read == "Incomplete") {
+            this.read = "Complete";
+        } else {
+            this.read = "Incomplete";
+        }
+        return this.read;
+    }
 }
- 
 function displayAddBookModal () {
  
     // Display modal by setting display to block
@@ -71,9 +87,6 @@ function addBookToLibrary(event) {
         document.querySelector('#formPages').value = '';
         document.querySelector('#formRead').value = 'Not Completed';
     }
- 
-    console.log(myLibrary);
- 
     
 }
  
@@ -137,7 +150,7 @@ function displayBook() {
             editButton.classList.add("editButton");
             editButton.textContent = "Edit"
             editButton.addEventListener("click", () => {
-                myLibrary[books].markAsComplete();
+                myLibrary[books].markAsComplete;
                 displayBook();
             })
             bookObjectContainer.appendChild(editButton);
@@ -170,24 +183,20 @@ const titleSort = sortByTitleAlpha.addEventListener("click", () => {
     displayBook();
 })
 
-
-Book.prototype.markAsComplete  = function() {
-    
-    if (this.read == "Incomplete") {
-        this.read = "Complete";
-    } else {
-        this.read = "Incomplete";
-    }
-    
-}
  
-const poe = new Book("Poe", "Roland", 700, "Incomplete");
-const poe2 = new Book("Aoe", "Roland", 700, "Complete");
-const poe3 = new Book("Coe", "Roland", 700, "Complete");
+const poe = new Book("Poe", "Me", 700, "Incomplete");
+const poe2 = new Book("Aoe", "Myself", 700, "Complete");
+const poe3 = new Book("Coe", "I", 700, "Complete");
  
 myLibrary.push(poe);
 myLibrary.push(poe2);
 myLibrary.push(poe3);
+
+
+poe.markAsComplete = "Incomplete";
+console.log(poe.completionStatus())
+poe.changeCompletionStatus
+console.log(poe.completionStatus())
 displayBook();
  
 // TO DO: 
